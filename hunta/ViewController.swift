@@ -24,8 +24,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // start getting magnetic headings
         locationManager.startUpdatingHeading()
         
-        
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,6 +73,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // called every time the locationManager gets a new location
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("locations = \(locations)")
+        
+        let currentLocation = manager.location?.coordinate
+        ServerHelper.UpdateLocation((currentLocation?.latitude.description)!, longitude: (currentLocation?.longitude.description)!, identifier: UIDevice.currentDevice().identifierForVendor!.UUIDString)
+
     }
     
 

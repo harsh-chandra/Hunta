@@ -13,6 +13,7 @@
 		36A9F6781D3EF6DD00F35BF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36A9F6771D3EF6DD00F35BF8 /* Assets.xcassets */; };
 		36A9F67B1D3EF6DD00F35BF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36A9F6791D3EF6DD00F35BF8 /* LaunchScreen.storyboard */; };
 		36A9F6861D3EF6DD00F35BF8 /* huntaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A9F6851D3EF6DD00F35BF8 /* huntaTests.swift */; };
+		3A88634D1D3EFDA2005DB292 /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88634C1D3EFDA2005DB292 /* ServerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		36A9F6811D3EF6DD00F35BF8 /* huntaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = huntaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36A9F6851D3EF6DD00F35BF8 /* huntaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = huntaTests.swift; sourceTree = "<group>"; };
 		36A9F6871D3EF6DD00F35BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A88634C1D3EFDA2005DB292 /* ServerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				36A9F6771D3EF6DD00F35BF8 /* Assets.xcassets */,
 				36A9F6791D3EF6DD00F35BF8 /* LaunchScreen.storyboard */,
 				36A9F67C1D3EF6DD00F35BF8 /* Info.plist */,
+				3A88634C1D3EFDA2005DB292 /* ServerHelper.swift */,
 			);
 			path = hunta;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				36A9F6731D3EF6DD00F35BF8 /* ViewController.swift in Sources */,
 				36A9F6711D3EF6DD00F35BF8 /* AppDelegate.swift in Sources */,
+				3A88634D1D3EFDA2005DB292 /* ServerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +399,7 @@
 				36A9F68C1D3EF6DD00F35BF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		36A9F68D1D3EF6DD00F35BF8 /* Build configuration list for PBXNativeTarget "huntaTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +408,7 @@
 				36A9F68F1D3EF6DD00F35BF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
