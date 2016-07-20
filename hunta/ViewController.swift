@@ -72,9 +72,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // called every time the locationManager gets a new location
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //print("locations = \(locations)")
-        
+
         let currentLocation = manager.location?.coordinate
+        
+        //print(currentLocation!)
+        //print(locationManager!.heading?.trueHeading)
+        
         ServerHelper.UpdateLocation((currentLocation?.latitude.description)!, longitude: (currentLocation?.longitude.description)!, identifier: UIDevice.currentDevice().identifierForVendor!.UUIDString)
 
     }
