@@ -13,7 +13,6 @@
 		36A9F6781D3EF6DD00F35BF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36A9F6771D3EF6DD00F35BF8 /* Assets.xcassets */; };
 		36A9F67B1D3EF6DD00F35BF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36A9F6791D3EF6DD00F35BF8 /* LaunchScreen.storyboard */; };
 		36A9F6861D3EF6DD00F35BF8 /* huntaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A9F6851D3EF6DD00F35BF8 /* huntaTests.swift */; };
-		36A9F6911D3EF83100F35BF8 /* ViewControllerMapFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A9F6901D3EF83100F35BF8 /* ViewControllerMapFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +36,6 @@
 		36A9F6811D3EF6DD00F35BF8 /* huntaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = huntaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36A9F6851D3EF6DD00F35BF8 /* huntaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = huntaTests.swift; sourceTree = "<group>"; };
 		36A9F6871D3EF6DD00F35BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		36A9F6901D3EF83100F35BF8 /* ViewControllerMapFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMapFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +79,6 @@
 			children = (
 				36A9F6701D3EF6DD00F35BF8 /* AppDelegate.swift */,
 				36A9F6721D3EF6DD00F35BF8 /* ViewController.swift */,
-				36A9F6901D3EF83100F35BF8 /* ViewControllerMapFunctions.swift */,
 				36A9F6741D3EF6DD00F35BF8 /* Main.storyboard */,
 				36A9F6771D3EF6DD00F35BF8 /* Assets.xcassets */,
 				36A9F6791D3EF6DD00F35BF8 /* LaunchScreen.storyboard */,
@@ -149,6 +146,7 @@
 				TargetAttributes = {
 					36A9F66C1D3EF6DD00F35BF8 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = C3WYHVF2ME;
 					};
 					36A9F6801D3EF6DD00F35BF8 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -202,7 +200,6 @@
 			files = (
 				36A9F6731D3EF6DD00F35BF8 /* ViewController.swift in Sources */,
 				36A9F6711D3EF6DD00F35BF8 /* AppDelegate.swift in Sources */,
-				36A9F6911D3EF83100F35BF8 /* ViewControllerMapFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,10 +328,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = hunta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Luke-Murray.hunta";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -342,10 +342,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = hunta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Luke-Murray.hunta";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
