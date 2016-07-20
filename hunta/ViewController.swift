@@ -67,12 +67,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // called every time the locationManager gets a new heading
     func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        print(newHeading.trueHeading)
+        //print(newHeading.trueHeading)
     }
     
     // called every time the locationManager gets a new location
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("locations = \(locations)")
+        //print("locations = \(locations)")
         
         let currentLocation = manager.location?.coordinate
         ServerHelper.UpdateLocation((currentLocation?.latitude.description)!, longitude: (currentLocation?.longitude.description)!, identifier: UIDevice.currentDevice().identifierForVendor!.UUIDString)
@@ -80,6 +80,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
 
+    @IBAction func KillButtonPressed(sender: UIButton) {
+        let currentLocation = locationManager.location?.coordinate
+        let heading = locationManager?.heading?.trueHeading
+        ServerHelper.AttemptKill((currentLocation?.latitude.description)!, longitude: (currentLocation?.longitude.description)!, angleRelativeToTrueNorth: heading!, identifier: UIDevice.currentDevice().identifierForVendor!.UUIDString)
+        print(currentLocation)
+        print(heading)
+    }
 
 }
 
