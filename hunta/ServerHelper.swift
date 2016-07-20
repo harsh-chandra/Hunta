@@ -23,12 +23,9 @@ public class ServerHelper  {
         task.resume()
     }
     
-    public class func UpdateLocation(latitude : String, longitude : String, identifier : String) -> [String:String] {
+    public class func UpdateLocation(latitude : String, longitude : String, identifier : String) {
         let dict = ["update_location":"anything", "latitude":latitude, "longitude":longitude, "name":identifier]
-        let JSONString = BaseCall(dict)
-        let resultDictionary = self.convertStringToDictionary(JSONString)!
-        return resultDictionary
-        
+        var JSONString = BaseCall(dict)
     }
     
     public class func AttemptKill(latitude : String, longitude : String, angleRelativeToTrueNorth : Double, identifier : String) -> [String:String] {
@@ -70,7 +67,7 @@ public class ServerHelper  {
                 return
             }
             do {
-                if let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]{
+                if (try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]) != nil{
                     if let str = NSString(data:data!, encoding: NSUTF8StringEncoding) as? String {
                         print(str)
                         resultString = str
