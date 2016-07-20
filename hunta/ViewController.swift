@@ -12,6 +12,8 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager : CLLocationManager!
+    var timer: NSTimer!
+    var shouldServerUpdate : Bool!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,21 +26,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // start getting magnetic headings
         locationManager.startUpdatingHeading()
         
+        // set the accuracy of the location manager
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // set a timer to debounce calls to the server by the time interval (first number in call)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.resetServerCallTimer), userInfo: nil, repeats: true)
+        shouldServerUpdate = true
+        
     }
     
+    // when the view appears, make sure the user has authorized the app for location tracking
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         checkLocationAuthorizationStatus()
     }
     
-    // MARK: - location manager to authorize user location for Maps app
+    // sets should server update to true, so that server calls are made
+    func resetServerCallTimer() {
+        shouldServerUpdate = true
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // if the user has authorized us to track their location, start updating their location
+    // else show an alert to the user to let them allow constant location tracking in their settings
     func checkLocationAuthorizationStatus() {
         switch CLLocationManager.authorizationStatus() {
             case .AuthorizedAlways:
@@ -62,33 +77,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
-
-    
     
     // called every time the locationManager gets a new heading
     func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        //print(newHeading.trueHeading)
+        // does nothing
     }
     
     // called every time the locationManager gets a new location
+    // sends the users current location to the server
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
         let currentLocation = manager.location?.coordinate
         
-        //print(currentLocation!)
-        //print(locationManager!.heading?.trueHeading)
-        
-        ServerHelper.UpdateLocation((currentLocation?.latitude.description)!, longitude: (currentLocation?.longitude.description)!, identifier: UIDevice.currentDevice().identifierForVendor!.UUIDString)
-
+        if shouldServerUpdate! == true {
+             ServerHelper.UpdateLocation((currentLocation?.latitude.description)!, longitude: (currentLocation?.longitude.description)!, identifier: UIDevice.currentDevice().identifierForVendor!.UUIDString)
+            shouldServerUpdate = false
+        }
     }
+    
+
+
     
 
     @IBAction func KillButtonPressed(sender: UIButton) {
         let currentLocation = locationManager.location?.coordinate
         let heading = locationManager?.heading?.trueHeading
         ServerHelper.AttemptKill((currentLocation?.latitude.description)!, longitude: (currentLocation?.longitude.description)!, angleRelativeToTrueNorth: heading!, identifier: UIDevice.currentDevice().identifierForVendor!.UUIDString)
-        print(currentLocation)
-        print(heading)
+        
+        // debug statements
+        print(currentLocation?.latitude.description)
+        print(currentLocation?.longitude.description)
+        print(heading!)
     }
 
 }

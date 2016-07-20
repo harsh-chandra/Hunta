@@ -28,11 +28,11 @@ public class ServerHelper  {
         var JSONString = BaseCall(dict)
     }
     
-    public class func AttemptKill(latitude : String, longitude : String, angleRelativeToTrueNorth : Double, identifier : String) -> [String:String] {
-        let dict = ["attempt":"tryKill", "x":latitude, "y":longitude, "heading": angleRelativeToTrueNorth, "name" : identifier]
+    public class func AttemptKill(latitude : String, longitude : String, angleRelativeToTrueNorth : Double, identifier : String) {
+        let dict = ["shoot":"unused", "latitude":latitude, "longitude":longitude, "heading": angleRelativeToTrueNorth, "name" : identifier]
         let JSONString = BaseCall(dict)
-        let resultDictionary = self.convertStringToDictionary(JSONString)!
-        return resultDictionary
+        //let resultDictionary = convertStringToDictionary(JSONString)!
+        //return resultDictionary
         
     }
     
