@@ -26,15 +26,43 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager.startUpdatingLocation()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        checkLocationAuthorizationStatus()
+    }
+    
+    // MARK: - location manager to authorize user location for Maps app
+    func checkLocationAuthorizationStatus() {
+        switch CLLocationManager.authorizationStatus() {
+            case .AuthorizedAlways:
+                locationManager.startUpdatingLocation()
+            case .AuthorizedWhenInUse, .Restricted, .Denied, .NotDetermined:
+                let alertController = UIAlertController(
+                    title: "Background Location Access Disabled",
+                    message: "In order to be play the game hunter, please open this app's settings and set location access to 'Always'.",
+                    preferredStyle: .Alert)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                
+                let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+                    if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                        UIApplication.sharedApplication().openURL(url)
+                    }
+                }
+                alertController.addAction(openAction)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+
     
     
     // called every time the locationManager gets a new heading
@@ -46,8 +74,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("locations = \(locations)")
     }
-    
-    // get the location authorization
     
 
 
